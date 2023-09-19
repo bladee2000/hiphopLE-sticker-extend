@@ -1,0 +1,58 @@
+{
+    "sticker_arr" :[
+        {
+            "name": "칸예1",
+            "header": "https://img.hiphople.com/files/attach/images/35038/101/728/025/97186162da5d7604d53946a86cff71ac.png",
+            "imgs":[
+                "https://img.hiphople.com/files/attach/images/35038/101/728/025/97186162da5d7604d53946a86cff71ac.png",
+                "https://img.hiphople.com/files/attach/images/35038/135/728/025/926f731b6f24cff7baa20d1ea294ea82.png",
+                "https://img.hiphople.com/files/attach/images/283/373/814/025/78910438c4012f3cf80730e657fe3609.jpeg",
+                "https://img.hiphople.com/files/attach/images/283/472/909/025/dfd3ccfb1ef4b5363918c82bfa3dc84e.jpg"
+                
+            ]
+                
+    
+        },
+        {
+            "name": "젓딧1",
+            "header": "https://blog.kakaocdn.net/dn/dHRuzy/btqBD1PqrjS/2KkmECTKqdM1Mi61x7Kr8K/img.jpg",
+            "imgs":[
+                "https://hiphople.com/files/attach/images/2531590/630/728/021/22728fe484bb292bb2226158a2c6c698.gif",
+                "https://hiphople.com/files/attach/images/2531590/630/728/021/22728fe484bb292bb2226158a2c6c698.gif",
+                "https://hiphople.com/files/attach/images/2531590/630/728/021/22728fe484bb292bb2226158a2c6c698.gif"
+            ]
+        },
+        {
+            "name": "젓딧2",
+            "header": "https://blog.kakaocdn.net/dn/dHRuzy/btqBD1PqrjS/2KkmECTKqdM1Mi61x7Kr8K/img.jpg",
+            "imgs":[
+                "https://hiphople.com/files/attach/images/2531590/630/728/021/22728fe484bb292bb2226158a2c6c698.gif",
+                "https://hiphople.com/files/attach/images/2531590/630/728/021/22728fe484bb292bb2226158a2c6c698.gif",
+                "https://hiphople.com/files/attach/images/2531590/630/728/021/22728fe484bb292bb2226158a2c6c698.gif"
+            ]
+        },
+        {
+            "name": "젓딧3",
+            "header": "https://blog.kakaocdn.net/dn/dHRuzy/btqBD1PqrjS/2KkmECTKqdM1Mi61x7Kr8K/img.jpg",
+            "imgs":[
+                "https://hiphople.com/files/attach/images/2531590/630/728/021/22728fe484bb292bb2226158a2c6c698.gif",
+                "https://hiphople.com/files/attach/images/2531590/630/728/021/22728fe484bb292bb2226158a2c6c698.gif",
+                "https://hiphople.com/files/attach/images/2531590/630/728/021/22728fe484bb292bb2226158a2c6c698.gif"
+            ]
+        },
+        {
+            "name": "젓딧4",
+            "header": "https://blog.kakaocdn.net/dn/dHRuzy/btqBD1PqrjS/2KkmECTKqdM1Mi61x7Kr8K/img.jpg",
+            "imgs":[
+                "https://hiphople.com/files/attach/images/2531590/630/728/021/22728fe484bb292bb2226158a2c6c698.gif",
+                "https://hiphople.com/files/attach/images/2531590/630/728/021/22728fe484bb292bb2226158a2c6c698.gif",
+                "https://hiphople.com/files/attach/images/2531590/630/728/021/22728fe484bb292bb2226158a2c6c698.gif"
+            ]
+        }
+    ]
+    
+    
+    
+    
+    
+}

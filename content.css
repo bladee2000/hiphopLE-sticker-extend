@@ -1,0 +1,87 @@
+
+#sticker_div {
+    width: 550px;
+}
+
+#sticker_popup {
+    width: 550px;
+    display: flex;
+    flex-direction: column;
+    border: 2px black solid;
+    border-radius: 2px;
+}
+
+/*------------------------- 옵션 바 -----------------------------*/
+
+#sticker_popup_options_bar {
+    background-color: rgb(245, 197, 197);
+    font-size: 1.3em;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#options_btn {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0.3em;
+    cursor: pointer;
+    background-color: rgb(167, 167, 167);
+}
+
+/* -------------------- 스티커 목록 내비게이션바----------------------*/
+#sticker_popup_nav {
+    display: flex;
+    background-color: rgb(250, 175, 175);
+    height: 200px;
+    align-items: flex-start;
+    overflow: auto;
+    
+}
+
+
+#nav_imgs {
+    text-align: center;
+    width: 100%;
+    
+    
+}
+
+.nav_img_block {
+    text-align: center;
+    display: inline-block;
+    width: 90px;
+    height: 100px;
+    line-height: 90px;
+    
+}
+
+.nav_img_block.selected {
+    background-color: rgb(150, 150, 150);
+}
+.nav_img_block > img {
+    vertical-align: middle;
+    margin-top: 7.5px;
+}
+
+/* --------------------------- 스티커 리스튼 ---------------------------*/
+
+#sticker_popup_select {
+    background-color: rgb(148, 148, 252);
+    height: 260px;
+    overflow: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.select_img_block {
+    text-align: center;
+    display: flex;
+    width: 130px;
+    height: 130px;
+    align-items: center;
+}
+

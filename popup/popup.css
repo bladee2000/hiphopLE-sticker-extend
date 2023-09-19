@@ -1,0 +1,11 @@
+#App {
+    width: 400px;
+    
+}
+
+#options_btn {
+    background-color: rgba(151, 151, 151, 0.678);
+    padding: 0.7em;
+    font-size: 1.5em;
+    cursor: pointer;
+}
