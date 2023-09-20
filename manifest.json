@@ -1,7 +1,7 @@
 {
     "name": "힙합엘이 스티커 확장 프로그램",
     "description": "테스트",
-    "version": "1.0",
+    "version": "1.0.0",
     "manifest_version": 3,
     "permissions": [
         "storage"
@@ -14,8 +14,8 @@
     },
     "content_scripts":[
       {
-        "js": ["content.js"],
-        "css": ["content.css"],
+        "js": ["./injectContent/content.js"],
+        "css": ["./injectContent/content.css"],
         "matches":[
           "https://hiphople.com/*"
         ]
