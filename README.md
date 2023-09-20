@@ -1,1 +1,1 @@
-# hiphopLE-sticker-extend
+# 힙합엘이 스티커 확장 프로그램
