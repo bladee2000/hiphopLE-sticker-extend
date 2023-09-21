@@ -353,10 +353,21 @@ div[data-component="stickerEditer"] {
     background-color: var(--light-gary);
 }
 
+.editer_img_add_title_bar {
+    display: flex;
+}
+
 .editer_img_add_title{
-    font-size: 18px;
+    font-size: 1.5em;
     font-weight: bold;
     margin-bottom: 5px;
+}
+
+.editer_readme{
+    display: flex;
+    align-items: center;
+    margin-left: 5px;
+    font-size: 1.1em;
 }
 
 .editer_img_add_content {

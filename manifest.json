@@ -1,7 +1,7 @@
 {
     "name": "힙합엘이 스티커 확장 프로그램",
     "description": "테스트",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "manifest_version": 3,
     "icons" :{
       "16": "./img/icon-16.png",

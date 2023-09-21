@@ -25,16 +25,18 @@ export default class StickerManager extends Component{
     } 
     
     afterFirstRender() {
-        this.loadSticker()
-        
+        this.loadstorage()
     }
     
-    async loadSticker() {
+    async loadstorage() {
         await this.sticker.getStickerFromLocal()
-        this.setState({ sticker_arr: this.sticker.sticker_array })
-        console.log(this.state.sticker_arr)
+        let options = await chrome.storage.local.get("options")
         
-       
+        this.setState({ 
+            sticker_arr: this.sticker.sticker_array ,
+            options: options["options"]
+        })
+        console.log(this.state)
     }
     
     mounted(){
@@ -50,7 +52,8 @@ export default class StickerManager extends Component{
             if (this.state.now_editer_role != ""){
                 this.sticker_editer = new StickerEditer(stickerEditer, {
                     role: this.state.now_editer_role,
-                    sticker: this.state.now_editer_sticker
+                    sticker: this.state.now_editer_sticker,
+                    options: this.state.options
                 })
             }
             
@@ -314,6 +317,7 @@ class StickerEditer extends Component {
                 return `<img src="${img}">`
             }
         }
+        let readme_page = this.props.options.readme_page
 
         return `
             <div class="editer_titlebar">
@@ -337,7 +341,11 @@ class StickerEditer extends Component {
             </div>
 
             <div class="img_add">
-                <div class="editer_img_add_title">이미지 추가</div>
+                <div class="editer_img_add_title_bar">
+                    <div class="editer_img_add_title">이미지 추가</div> 
+                    <div class="editer_readme"><a href="${readme_page}" target="_blank">사용팁</a>
+                </div>
+                </div>
                 <div class="editer_img_add_content">
                     <input placeholder="이미지 주소 입력후 엔터" id="img_addInput"></input>
                     <div>or 드래그해서 추가 <small>(로컬파일 안됨!)</small></div>
