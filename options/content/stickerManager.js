@@ -340,7 +340,7 @@ class StickerEditer extends Component {
                 <div class="editer_img_add_title">이미지 추가</div>
                 <div class="editer_img_add_content">
                     <input placeholder="이미지 주소 입력후 엔터" id="img_addInput"></input>
-                    <div>or 이미지 드래그해서 추가 <small>(로컬파일 안됨!)</small></div>
+                    <div>or 드래그해서 추가 <small>(로컬파일 안됨!)</small></div>
                 </div>
             </div>
 
@@ -366,12 +366,16 @@ class StickerEditer extends Component {
     }
 
     changingImgListOrder(arr) {
+        let before_scrolltop = this.target.querySelector(".editer_sticker_img_list").scrollTop
         this.setState({
             sticker:{
                 ...this.state.sticker,
                 imgs: arr
             }
         })
+
+        let img_list = this.target.querySelector(".editer_sticker_img_list")
+        img_list.scrollTo(0, before_scrolltop)
     }
 
     haederChange(event){

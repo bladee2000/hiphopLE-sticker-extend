@@ -9,9 +9,9 @@ function insert_btn() {
         
         const sticker_btn = document.createElement("div")
         
-        sticker_btn.innerText = "스티커 확장!"
-        sticker_btn.className = "sticker_btn"
-        sticker_btn.style = "height:28px; display:inline-block; margin-left:5px; cursor:pointer;"
+        sticker_btn.innerHTML = "<div>스티커 확장!</div>"
+        sticker_btn.classList.add("sticker_btn")
+        sticker_btn.style = "display:inline-block; margin-left:10px; cursor:pointer; position: relative; padding:7px; background-color: #abffb9; border-radius: 1.7em;"
 
         cmt_write_tool[i].insertBefore(sticker_btn, submit_btn)
     }
@@ -34,25 +34,24 @@ function insert_popup(target_comment_write_tool) {
                                     <div id="sticker_popup_select"></div>
                                 </div>`
 
-    sticker_popup.style = "display: block; z-index:999; position: relative;"
+    sticker_popup.style = "display: block; z-index:999; position: relative; top:7px;"
     sticker_popup.id = "sticker_div"
     sticker_popup.innerHTML = sticker_popup_html
 
-    target_comment_write_tool.insertBefore(sticker_popup, submit_btn)
+    target_comment_write_tool.appendChild(sticker_popup)
 
 }
 
 function click_sticker_btn(event) {
     const sticker_popup = document.getElementById("sticker_div")
-    console.log(sticker_popup)
+    
     if (sticker_popup === null) {
-        insert_popup(event.target.parentElement)
+        const target = event.target.closest(".comment-write-tool")
+        insert_popup(target)
         start_fill_popup()
     } else {
         sticker_popup.remove()
-        
     }
-    
 }
 
 async function get_sticker_list(){
@@ -123,12 +122,9 @@ async function nav_img_onclick(sticker_name){
 }
 
 async function select_img_onclick(src) {
-    console.log(src)
     const sticker_div = document.getElementById("sticker_div")
     const textarea = sticker_div.parentElement.parentElement.getElementsByTagName("textarea")[0]
     const btn = sticker_div.parentElement.getElementsByTagName("button")[0]
-    console.log(textarea)
-    console.log(btn)
     
     const options = await chrome.storage.local.get("options")
     textarea.value = comment_html_shell(src, options["options"])
@@ -138,14 +134,12 @@ async function select_img_onclick(src) {
 }
 
 function comment_html_shell(img_src, options){
-    console.log(options)
     const style = `width:${options.comment_img_size.x}px; height:${options.comment_img_size.y}px;`
     const href = options.user_readme_page == "" ? options.readme_page : options.user_readme_page
-    console.log(href)
+    
     if (img_src.includes(".mp4")) {
-        console.log(img_src.indexOf("/files"))
         const new_src = img_src.substr(img_src.indexOf("/files"))
-        console.log(new_src)
+        
         return `<video src=${new_src} style="${style}" loop="true" autoplay="true"></video>
                 <a href="${href}" target="_blank" style="font-size:0.8em;">스티커 확장 사용하기!</a>`
     } else {
@@ -156,11 +150,7 @@ function comment_html_shell(img_src, options){
 
 async function start_fill_popup(){
     let sticker_json = await get_sticker_list()
-    console.log(sticker_json)
-    
     fill_sticker_nav(sticker_json)
-    
-    
 }
 
 async function click_option_btn() {

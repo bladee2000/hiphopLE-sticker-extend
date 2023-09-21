@@ -177,7 +177,7 @@ div[data-component="stickerList"] {
 }
 
 .utilBtn {
-    font-size: 1.3em;
+    font-size: 1.33em;
     background-color: rgb(114, 206, 114);
     cursor: pointer;
     padding: 0.4em;
@@ -403,4 +403,15 @@ div[data-component="stickerEditer"] {
 
 #setting {
     font-size: 1.4em;
+}
+
+/* ----------------------------- 소개 페이지 -------------------------- */
+
+#info {
+    font-size: 1.4em;
+    line-height: 1.6em;
+}
+
+#info > h1 {
+    font-weight: 500;
 }

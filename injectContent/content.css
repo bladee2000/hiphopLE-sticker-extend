@@ -59,7 +59,7 @@
 }
 
 .nav_img_block.selected {
-    background-color: rgb(150, 150, 150);
+    background-color: rgba(150, 150, 150, 0.637);
 }
 .nav_img_block > img {
     vertical-align: middle;

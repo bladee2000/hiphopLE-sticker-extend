@@ -50,7 +50,7 @@ export default class Setting extends Component {
 
     option_update() {
         let [img_size_x, img_size_y] = this.get_img_size()
-        let user_readme_input = this.target.querySelector("#user_readme_input").value.replace(/^\s+|\s+$/g, '')
+        let user_readme_input = this.target.querySelector("#user_readme_input").value.replace(/^\s+|\s+$/g, '').replace(/["'`]/g, '')
         let options = {
             ...this.state.options,
             comment_img_size: {

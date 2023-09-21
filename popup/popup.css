@@ -1,11 +1,13 @@
-#App {
-    width: 400px;
-    
+body {
+    width: 250px;
+    font-size: 1.1em;
 }
 
 #options_btn {
-    background-color: rgba(151, 151, 151, 0.678);
+    background-color: rgba(192, 192, 192, 0.678);
     padding: 0.7em;
-    font-size: 1.5em;
+    font-size: 1.2em;
     cursor: pointer;
+    border-radius: 1em;
+    width: fit-content;
 }
