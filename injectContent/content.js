@@ -140,8 +140,7 @@ function comment_html_shell(img_src, options){
     if (img_src.includes(".mp4")) {
         const new_src = img_src.substr(img_src.indexOf("/files"))
         
-        return `<video src=${new_src} style="${style}" loop="true" autoplay="true"></video>
-                <a href="${href}" target="_blank" style="font-size:0.8em;">스티커 확장 사용하기!</a>`
+        return `<video src=${new_src} style="${style}" loop="true" autoplay="true"></video>`
     } else {
         return `<a href="${href}" target="_blank"><img src="${img_src}" style="${style}"></a>`
     }
