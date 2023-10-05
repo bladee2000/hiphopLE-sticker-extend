@@ -269,7 +269,7 @@ div[data-component="stickerEditer"] {
 }
 
 .editer_infoEdit {
-    height: 120px;
+    height: 130px;
     border-bottom: var(--content-bound-line);
     display: flex;
     flex-direction: row;
@@ -340,13 +340,20 @@ div[data-component="stickerEditer"] {
 
 
 .editer_stickerinfo {
+    height: 100%;
     margin-left: 25px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
 }
 
 #name_input{
     margin-bottom: 5px;
 }
 
+#header_input {
+    margin-bottom: 5px;
+}
 .img_add{
     padding: 10px 5px 10px 5px;
     border-bottom: var(--content-bound-line);

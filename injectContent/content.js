@@ -59,7 +59,7 @@ async function get_sticker_list(){
     return sticker_list
 }
 
-function fill_sticker_select(stickers){
+function fill_sticker_select(stickers, readme){
     const sticker_popup_select = document.getElementById("sticker_popup_select")
     while(sticker_popup_select.firstChild) {
         sticker_popup_select.removeChild(sticker_popup_select.firstChild)
@@ -67,7 +67,7 @@ function fill_sticker_select(stickers){
 
     for (const [key, value] of Object.entries(stickers)) {
         const newDiv = document.createElement("div")
-        newDiv.onclick = function() {select_img_onclick(value)}
+        newDiv.onclick = function() {select_img_onclick(value, readme)}
         newDiv.className = "select_img_block"
         const style = "width:95%; height:95%; cursor: pointer; "
         if (value.includes(".mp4")) {
@@ -115,34 +115,32 @@ async function nav_img_onclick(sticker_name){
     let sticker_json = await get_sticker_list()
     for (const sticker of sticker_json["sticker_arr"]) {
         if (sticker["name"] == sticker_name) {
-            fill_sticker_select(sticker["imgs"])
+            fill_sticker_select(sticker["imgs"], sticker["readme"])
         }
     }
     
 }
 
-async function select_img_onclick(src) {
+async function select_img_onclick(src, readme) {
     const sticker_div = document.getElementById("sticker_div")
     const textarea = sticker_div.parentElement.parentElement.getElementsByTagName("textarea")[0]
     const btn = sticker_div.parentElement.getElementsByTagName("button")[0]
     
     const options = await chrome.storage.local.get("options")
-    textarea.value = comment_html_shell(src, options["options"])
+    textarea.value = comment_html_shell(src, options["options"], readme == "" ? options["options"].readme_page : readme)
     btn.click() // 등록버튼 누르면 몇 초간 버튼 비활성화됨
     const sticker_popup = document.getElementById("sticker_div")
     sticker_popup.remove()
 }
 
-function comment_html_shell(img_src, options){
+function comment_html_shell(img_src, options, readme){
     const style = `width:${options.comment_img_size.x}px; height:${options.comment_img_size.y}px;`
-    const href = options.user_readme_page == "" ? options.readme_page : options.user_readme_page
     
     if (img_src.includes(".mp4")) {
         const new_src = img_src.substr(img_src.indexOf("/files"))
-        
-        return `<video src=${new_src} style="${style}" loop="true" autoplay="true"></video>`
+        return `<video src=${new_src} style="${style}" loop="true" autoplay="true" muted="true"></video>`
     } else {
-        return `<a href="${href}" target="_blank"><img src="${img_src}" style="${style}"></a>`
+        return `<a href="${readme}" target="_blank"><img src="${img_src}" style="${style}"></a>`
     }
     
 }

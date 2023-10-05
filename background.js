@@ -28,6 +28,16 @@ async function option_setup() {
     
 }
 
+async function check_sticker() {
+    let result = await chrome.storage.local.get("sticker_arr")
+    for (let sticker of result["sticker_arr"]) {
+        if (!(sticker.readme)) {
+            sticker.readme = ""
+        }
+    }
+    chrome.storage.local.set({sticker_arr: result["sticker_arr"]})
+}
+
 async function reset() {
     await chrome.storage.local.clear()
     sticker_setup()
@@ -43,6 +53,7 @@ async function main() {
         }
     })
     
+    check_sticker()
     console.log(await chrome.storage.local.get(null))
     
     chrome.runtime.onMessage.addListener(function(message) {

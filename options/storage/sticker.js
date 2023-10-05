@@ -68,10 +68,20 @@ export default class Sticker {
     }
 
     addStickerUseJSON(sticker) {
-        if (!(sticker.name && sticker.header && sticker.imgs)) {
+        if (!(sticker.name)) {
             alert("스티커 형식이 올바르지 않습니다!")
             return false;
         }
+        if (!(sticker.header)) {
+            sticker.header = ""
+        }
+        if (!(sticker.imgs)) {
+            sticker.imgs = []
+        }
+        if (!(sticker.readme)) {
+            sticker.readme = ""
+        }
+
         sticker.name = sticker.name.replace(/^\s+|\s+$/g, '').replace(/["'`]/g, '')
         
         var i = 1;

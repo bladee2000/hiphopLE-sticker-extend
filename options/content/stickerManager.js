@@ -11,17 +11,17 @@ export default class StickerManager extends Component{
             sticker_arr: undefined,
             focus_bool: false
         }
-        
-        
+        this.stickerListScroll = 0
     }
 
     template() {
+        let sitckerList = this.target.querySelector(".sticker_list")
+        if (sitckerList !== null){this.stickerListScroll = sitckerList.scrollTop}
+        
         return `
-            
             <div data-component="stickerList"></div>
             <div data-component="stickerEditer"></div>
-            
-        `
+            `
     } 
     
     afterFirstRender() {
@@ -56,8 +56,8 @@ export default class StickerManager extends Component{
                     options: this.state.options
                 })
             }
-            
-            
+            let sticker_list = this.target.querySelector(".sticker_list")
+            sticker_list.scrollTo(0, this.stickerListScroll)
         }
         console.log(this.state)
     }
@@ -72,8 +72,9 @@ export default class StickerManager extends Component{
                 focus_bool: true
             })
             alert("추가되었습니다!")
+            let sticker_list = this.target.querySelector(".sticker_list")
+            sticker_list.scrollTop = sticker_list.scrollHeight
         }
-        
     }
 
     editSticker(original_name, sticker) {
@@ -85,7 +86,6 @@ export default class StickerManager extends Component{
             })
             alert("저장되었습니다!")
         }
-        
     }
 
     removeSticker(sticker_name) {
@@ -128,6 +128,9 @@ export default class StickerManager extends Component{
                 focus_bool: true
             })
         }
+
+        let sticker_list = this.target.querySelector(".sticker_list")
+        sticker_list.scrollTop = sticker_list.scrollHeight
     }
 
     stickerChangeAll(sticker_array) {
@@ -166,7 +169,6 @@ export default class StickerManager extends Component{
                 now_editer_sticker: sticker,
                 focus_bool: false
             })
-            
         })
 
         this.addEvent("click", ".sticker_removeBtn", (event) => {
@@ -290,7 +292,8 @@ class StickerEditer extends Component {
                 sticker: {
                     header: "",
                     name: "",
-                    imgs: []
+                    imgs: [],
+                    readme: ""
                 }
             }
             
@@ -307,12 +310,10 @@ class StickerEditer extends Component {
         }
     }
 
-    
-    
     template() {
         function img_tag(img) {
             if (img.includes(".mp4")) {
-                return `<video src="${img}" loop="true" autoplay="true">`
+                return `<video src="${img}" loop="true" autoplay="true" muted="true">`
             } else {
                 return `<img src="${img}">`
             }
@@ -337,6 +338,8 @@ class StickerEditer extends Component {
                     <input id="name_input" value="${this.state.sticker.name}" placeholder="스티커 제목(최대 25자)" maxlength="25"></input>
                     <div>대표 이미지</div>
                     <input id="header_input" value="${this.state.sticker.header}" placeholder="이미지 주소 입력"></input>
+                    <div>클릭시 이동할 링크 (선택)</div>
+                    <input id="readme_input" value="${this.state.sticker.readme}" placeholder="주소 입력 (선택)"></input>
                 </div>
             </div>
 
@@ -399,12 +402,24 @@ class StickerEditer extends Component {
         })
     }
 
+    readmeChange(event) {
+        if (event.target.value == this.state.sticker.readme) {
+            return ;
+        }
+        
+        this.setState({
+            sticker: {
+                ...this.state.sticker,
+                readme: event.target.value.replace(/["'`]/g, '')
+            }
+        })
+    }
+
     nameChange(event) {
         if (event.target.value == this.state.sticker.name) {
             return ;
         }
         
-
         this.setState({
             sticker: {
                 ...this.state.sticker,
@@ -462,24 +477,31 @@ class StickerEditer extends Component {
             }
         })
 
-        this.addEvent("keyup", "#header_input", (event) => {
-            if (event.keyCode == 13) {
+
+        this.addEvent("keyup", "input", (event) => {
+            if (event.keyCode == 13 && event.target.id == "header_input") {
                 this.haederChange(event)
             }
-            
-        })
-
-        this.addEvent("focusout", "#header_input", this.haederChange.bind(this))
-
-        this.addEvent("keyup", "#name_input", (event) => {
-            if (event.keyCode == 13){
+            if (event.keyCode == 13 && event.target.id == "name_input") {
                 this.nameChange(event)
+            }
+            if (event.keyCode == 13 && event.target.id == "readme_input") {
+                this.readmeChange(event)
             }
         })
 
-        this.addEvent("focusout", "#name_input", this.nameChange.bind(this))
+        this.addEvent("focusout", "input", (event) => {
+            if (event.target.id == "header_input") {
+                this.haederChange(event)
+            }
+            if (event.target.id == "name_input") {
+                this.nameChange(event)
+            }
+            if (event.target.id == "readme_input") {
+                this.readmeChange(event)
+            }
+        })
 
-        
         // 드래그 앤 드롭으로 파일 추가
         this.addEvent("drop", ".editer_sticker_img_list", (event) => {
             event.preventDefault();

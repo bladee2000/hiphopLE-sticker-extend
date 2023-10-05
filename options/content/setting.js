@@ -16,14 +16,7 @@ export default class Setting extends Component {
                 <input class="img_size_input" type="number" id="img_sizex" min=100 max=300 value="${this.state.options.comment_img_size.x}"> 
                 x 
                 <input class="img_size_input" type="number" id="img_sizey" min=100 max=300 value="${this.state.options.comment_img_size.y}">
-                <br><br>
-                <h2>스티커 클릭시 이동할 링크 (선택)</h2>
-                <p>댓글의 스티커 이미지 클릭시 이동할 링크를 설정합니다.<br>
-                    <small><a href="${this.state.options.readme_page}" target="_blank">기본값</a></small>
-                </p>
-                <input id="user_readme_input" placeholder="미입력시 기본값" value="${this.state.options.user_readme_page}">
-
-        `
+            `
     }
 
     async load_options() {
@@ -50,14 +43,12 @@ export default class Setting extends Component {
 
     option_update() {
         let [img_size_x, img_size_y] = this.get_img_size()
-        let user_readme_input = this.target.querySelector("#user_readme_input").value.replace(/^\s+|\s+$/g, '').replace(/["'`]/g, '')
         let options = {
             ...this.state.options,
             comment_img_size: {
                 x: img_size_x,
                 y: img_size_y
-            },
-            user_readme_page: user_readme_input
+            }
         }
 
         console.log(options)
